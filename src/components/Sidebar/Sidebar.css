@@ -1,0 +1,11 @@
+.sidebar {
+	width: 345px;
+	height: 100vh;
+	padding: 20px 35px;
+	border: 1px solid red;
+	background-color: var(--background);
+}
+
+.mainMenu {
+	color: var(--tertiary-text);
+}

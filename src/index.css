@@ -44,6 +44,11 @@ h6 {
 	font-weight: 400;
 	line-height: 19.2px;
 }
+.h5 {
+	font-size: 18px;
+	font-weight: medium;
+	line-height: 21.6px;
+}
 .body-1 {
 	font-size: 14px;
 	font-weight: bold;

@@ -16,11 +16,13 @@ const Header = () => {
           <span>Calendar Admin</span>
         </div>
       </div>
-      <div className="burgerMenu">
-        <span></span>
-      </div>
-      <div className="headerTitle">
-        <h1>Calendar</h1>
+      <div className="headerMenu">
+        <div className="burgerMenu">
+          <span></span>
+        </div>
+        <div className="headerTitle">
+          <h1>Calendar</h1>
+        </div>
       </div>
       <Search />
       <div className="iconArea">
@@ -34,7 +36,14 @@ const Header = () => {
           <span className="body-2">connieganteng@mail.com</span>
         </div>
         <div className="avatar"></div>
+        <div className="lang">
+          <select name="lang" id="lang" className='h5'>
+            <option value="en" selected>EN</option>
+            <option value="de">DE</option>
+          </select>
+        </div>
       </div>
+
     </header>
   );
 }
