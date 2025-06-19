@@ -1,5 +1,8 @@
 import './Header.css'
+import Mail from './Mail';
+import Notification from './Notification';
 import Search from './Search';
+import Shedule from './Shedule';
 
 const Header = () => {
   return (
@@ -21,7 +24,16 @@ const Header = () => {
       </div>
       <Search />
       <div className="iconArea">
-
+        <Notification />
+        <Mail />
+        <Shedule />
+      </div>
+      <div className="userWrapper">
+        <div className="userData">
+          <h4>Connie Springer</h4>
+          <span className="body-2">connieganteng@mail.com</span>
+        </div>
+        <div className="avatar"></div>
       </div>
     </header>
   );

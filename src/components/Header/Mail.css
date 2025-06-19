@@ -1,0 +1,12 @@
+.emailWrapper {
+	position: relative;
+	width: 50px;
+	height: 50px;
+}
+.emailIcons img {
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	transform: rotate(0deg);
+	transition: transform 0.4s ease-in-out;
+}
