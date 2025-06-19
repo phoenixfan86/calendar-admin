@@ -1,0 +1,20 @@
+:root {
+	--primary: #1b48bb;
+	--primary-15: #1b48bb26;
+	--secondary: #0099ff;
+	--tertiary: #fab8c4;
+	--accent: #ffda55ff;
+	--primary-text: #303134ff;
+	--secondary-text: #717579ff;
+	--tertiary-text: #d7d7d7ff;
+	--light: #eeeeeeff;
+	--background: #fbfbfbff;
+	--white: #ffffffff;
+	--white-20: #ffffff33;
+	--primary-highligt: #edf1fbff;
+	--green: #09bd3cff;
+	--red: #fc2e53ff;
+	--dark-01: #161717ff;
+	--dark-02: #202020ff;
+	--dark-03: #2b2b2bff;
+}
