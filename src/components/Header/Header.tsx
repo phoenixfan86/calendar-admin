@@ -4,7 +4,14 @@ import Notification from './Notification';
 import Search from './Search';
 import Shedule from './Shedule';
 
-const Header = () => {
+interface HeaderProps {
+  activeLabel: string;
+  isVisible: boolean;
+  setIsVisible: (val: boolean) => void;
+}
+
+const Header = ({ activeLabel, isVisible, setIsVisible }: HeaderProps) => {
+
   return (
     <header>
       <div className="logo">
@@ -17,11 +24,11 @@ const Header = () => {
         </div>
       </div>
       <div className="headerMenu">
-        <div className="burgerMenu">
+        <div className="burgerMenu" onClick={() => setIsVisible(!isVisible)}>
           <span></span>
         </div>
         <div className="headerTitle">
-          <h1>Calendar</h1>
+          <h1>{activeLabel}</h1>
         </div>
       </div>
       <Search />

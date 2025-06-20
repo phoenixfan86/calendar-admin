@@ -13,7 +13,6 @@ header {
 	display: flex;
 	align-items: end;
 	gap: 16px;
-	margin-right: 100px;
 }
 
 .logoFirst {
@@ -56,7 +55,7 @@ header {
 	position: absolute;
 	display: block;
 	width: 22px;
-	height: 6px;
+	height: 5px;
 	border-radius: 5px;
 	background-color: var(--secondary-text);
 	transition: all 0.5s ease;
@@ -64,12 +63,16 @@ header {
 
 .burgerMenu > span::before {
 	content: '';
-	top: -8px;
+	top: -7px;
 }
 
 .burgerMenu > span::after {
 	content: '';
-	top: 8px;
+	top: 7px;
+}
+
+.headerTitle {
+	width: 155px;
 }
 
 /*-- general icons style --*/

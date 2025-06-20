@@ -1,13 +1,16 @@
 .sidebar {
-	width: 345px;
-	height: 100vh;
+	position: absolute;
+	left: -315px;
 	display: flex;
 	flex-direction: column;
 	gap: 28px;
-	padding: 20px 35px;
+	padding: 20px 35px 79px 35px;
 	background-color: var(--background);
-	border: 1px solid red;
 	transition: all 0.5s ease-in;
+}
+
+.sidebar.visible {
+	left: 0;
 }
 
 .sidebarTitle {
@@ -24,10 +27,12 @@
 	height: 60px;
 	display: flex;
 	gap: 34px;
-	padding: 0 16px;
+
 	align-items: center;
+	color: var(--secondary-text);
 	border-radius: 16px;
-	transition: all 0.5s ease;
+	padding: 0 16px;
+	transition: all 0.4s ease;
 }
 
 .menuItems:hover {
@@ -37,4 +42,52 @@
 
 .menuItems:hover a {
 	color: var(--primary);
+}
+
+.menuItems.active {
+	background-color: var(--primary-highligt);
+	color: var(--primary);
+}
+.menuItems.active a {
+	color: var(--primary);
+}
+
+.banner {
+	width: 245px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.bannerContent {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	padding: 25px 30px;
+	border-radius: 23px;
+	background-color: var(--accent);
+}
+
+.bannerBtn {
+	width: 127px;
+	height: 48px;
+	padding: 12px 18px;
+	border: none;
+	border-radius: 16px;
+	transition: all 0.3s ease-in;
+}
+
+.bannerBtn:hover {
+	transform: scale(0.97);
+}
+
+.copyright {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-top: 27px;
+}
+
+.copyright > .body-2 {
+	margin-top: 12px;
 }
