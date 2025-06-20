@@ -1,11 +1,40 @@
 .sidebar {
 	width: 345px;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
 	padding: 20px 35px;
-	border: 1px solid red;
 	background-color: var(--background);
+	border: 1px solid red;
+	transition: all 0.5s ease-in;
+}
+
+.sidebarTitle {
+	color: var(--tertiary-text);
 }
 
 .mainMenu {
-	color: var(--tertiary-text);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.menuItems {
+	height: 60px;
+	display: flex;
+	gap: 34px;
+	padding: 0 16px;
+	align-items: center;
+	border-radius: 16px;
+	transition: all 0.5s ease;
+}
+
+.menuItems:hover {
+	background-color: var(--primary-highligt);
+	color: var(--primary);
+}
+
+.menuItems:hover a {
+	color: var(--primary);
 }
