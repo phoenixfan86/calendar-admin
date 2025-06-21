@@ -172,24 +172,8 @@ i h4 {
 	transform: scale(0.98);
 }
 
-.submitBtn {
-	display: flex;
-	gap: 27px;
-	align-items: center;
-	padding: 15px 34px;
-	background-color: var(--primary);
-	border: none;
-	border-radius: 14px;
-	cursor: pointer;
-	transition: all 0.5s ease-in-out;
-}
-
-.submitBtn,
+.primaryBtn,
 i h4 {
 	font-size: 24px;
 	color: #fff;
-}
-
-.submitBtn:hover {
-	transform: scale(0.98);
 }

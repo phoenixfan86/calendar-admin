@@ -1,20 +1,9 @@
 
-import "./EventListModal.css"
+import "./EventListModal.css";
 import React from 'react';
 import { format } from 'date-fns';
-import type { Event } from '../../types/EventProps';
+import type { EventListModalProps } from '../../types/EventProps';
 
-
-
-interface EventListModalProps {
-  date: Date
-  events: Event[]
-  onClose: () => void
-  onAddNew: () => void
-  onDelete: (id: string) => void
-  onConfirm: (id: string) => void
-  onEdit: (id: string) => void
-}
 
 const EventListModal: React.FC<EventListModalProps> = ({
   date,
@@ -27,53 +16,85 @@ const EventListModal: React.FC<EventListModalProps> = ({
 }) => {
   return (
     <div className="modalWrapper">
-      <div className="modal">
+      <div className="eventListModal shadow">
         <div className="modalHeader">
-          <h2>Події на {format(date, 'MMMM do, yyyy')}</h2>
-          <button className="closeBtn" onClick={onClose}>
-            ✕
-          </button>
+          <div className="modalTitle">
+            <h2 className="primaryText">Event Detail</h2>
+            <p className="body-2">Lorem ipsum dolor sit amet</p>
+          </div>
+          <div className="modalHeaderBtn">
+            <button className="primaryBtn" onClick={onAddNew}>
+              <span className="body-1">+New Event</span>
+            </button>
+            <div className="closeBtn" onClick={onClose}>
+              <img src="./images/icons/xmark.png" alt="closeBtn" />
+            </div>
+          </div>
         </div>
-
-        <div className="modalBody">
-          <button className="addBtn" onClick={onAddNew}>
-            + Нова подія
-          </button>
-
+        <div className="eventModalBody">
           {events.length === 0 ? (
-            <p>Немає подій на цей день</p>
+            <p>No event on this day</p>
           ) : (
             <ul className="eventList">
               {events.map((event) => (
                 <li className="eventItem" key={event.id}>
-                  <div className="eventHeader">
-                    <h3>{event.title}</h3>
-                    <div className="eventMenu">
-                      <button onClick={() => onEdit(event.id)}>⋮</button>
+                  <div className="itemIcon">
+                    <div className="iconWrapper">
+                      <i className="fa-solid fa-calendar"></i>
                     </div>
                   </div>
-
-                  <p className="eventDescription">{event.description}</p>
-
-                  <p className="eventTime">
-                    {format(new Date(event.start), 'MMM d, yyyy • h:mm aa')}
-                  </p>
-
-                  <div className="eventFooter">
-                    <div className="users">
-                      {event.users?.map((user, idx) => (
-                        <img
-                          key={idx}
-                          src={user}
-                          alt="User"
-                          className="userIcon"
-                        />
-                      ))}
+                  <div className="itemContent">
+                    <div className="eventHeader">
+                      <h3 className="primaryText">{event.title}</h3>
+                      <div className="eventActions">
+                        <div onClick={() => onDelete(event.id)} className="delBtn">
+                          <i className="fa-solid fa-xmark"></i>
+                        </div>
+                        <div onClick={() => onConfirm(event.id)} className="checkBtn">
+                          <i className="fa-solid fa-check"></i>
+                        </div>
+                        <div onClick={() => onEdit(event.id)} className="otherBtn">
+                          <i className="fa-solid fa-ellipsis"></i>
+                        </div>
+                      </div>
                     </div>
-
-                    <div className="actions">
-                      <button onClick={() => onConfirm(event.id)}>✅ Підтвердити</button>
-                      <button onClick={() => onDelete(event.id)}>🗑️ Стерти</button>
+                    <p className="body-2 secondaryText">{event.description}</p>
+                    <div className="eventFooter">
+                      <div className="eventFooterUsers">
+                        {event.users?.map((user, idx) => (
+                          <img
+                            key={idx}
+                            src={user}
+                            alt="User"
+                            className="userIcon"
+                          />
+                        ))}
+                        <div className="userAvatar"></div>
+                        <div className="userAvatar"></div>
+                        <div className="userAvatar"></div>
+                        <div className="userAvatar"></div>
+                        <div className="userAvatar">
+                          <span><h5>5+</h5></span>
+                        </div>
+                      </div>
+                      <div className="eventFooterData">
+                        <i className="fa-solid fa-clock"></i>
+                        <div className="timeWrapper">
+                          <h6 className="primaryText">
+                            {format(new Date(event.start), 'h:mm aa')}
+                          </h6>
+                          <h6 className="primaryText">
+                            {format(new Date(event.start), 'MMM d, yyyy ')}
+                          </h6>
+                        </div>
+                      </div>
+                      <div className="eventFooterGeo">
+                        <i className="fa-solid fa-location-dot"></i>
+                        <div className="geoItem">
+                          <h6 className="primaryText">Corner Rounded St
+                            London, United Kingdom</h6>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </li>

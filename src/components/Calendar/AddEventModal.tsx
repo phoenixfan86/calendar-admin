@@ -2,13 +2,12 @@ import "./AddEventModal.css";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState, useRef } from "react";
 import DatePicker from "react-datepicker";
-import { format } from "date-fns";
 import type { SlotInfo } from "react-big-calendar";
 
 interface AddEventModalProps {
   selectedSlot: SlotInfo
   onClose: () => void
-  onSubmit: (title: string, start: Date, end: Date) => void
+  onSubmit: (title: string, description: string, start: Date, end: Date) => void
 }
 
 const AddEventModal: React.FC<AddEventModalProps> = ({
@@ -18,6 +17,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
 }) => {
 
   const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
   const [startDate, setStartDate] = useState<Date>(new Date(selectedSlot.start))
   const [endDate, setEndDate] = useState<Date>(new Date(selectedSlot.end))
 
@@ -36,7 +36,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    onSubmit(title, startDate, endDate)
+    onSubmit(title, description, startDate, endDate)
   }
 
   return (
@@ -148,13 +148,28 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
             <label htmlFor="">
               <h6>Event Name</h6>
             </label>
-            <input type="text" name="title" placeholder="Enter event name" min={3} required className="inputItem" />
+            <input
+              type="text"
+              name="title"
+              placeholder="Enter event name"
+              min={3}
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="inputItem" />
           </div>
           <div className="eventContent">
             <label htmlFor="">
               <h6>Description</h6>
             </label>
-            <textarea name="description" placeholder="Enter event description" minLength={10} required className="inputItem" />
+            <textarea
+              name="description"
+              placeholder="Enter event description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              minLength={10}
+              required
+              className="inputItem" />
           </div>
           <div className="modalBtn">
             <div className="attachBtn" onClick={handleAttachmentClick}>
@@ -169,7 +184,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
             </div>
             <button
               type="submit"
-              className="submitBtn"
+              className="primaryBtn"
             >
               <i className="fa-solid fa-floppy-disk"></i>
               <h4>Submit</h4>

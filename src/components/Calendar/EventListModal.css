@@ -1,0 +1,140 @@
+.modalWrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.25);
+	overflow: auto;
+	z-index: 10;
+}
+
+.eventListModal {
+	width: 962px;
+	max-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: 20px;
+	padding: 50px;
+	background: #fff;
+	overflow-y: auto;
+}
+
+.modalHeaderBtn {
+	display: flex;
+	gap: 41px;
+	align-items: center;
+}
+
+.eventList {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.eventItem {
+	display: flex;
+	gap: 30px;
+	padding: 32px 30px;
+	border: 1px solid var(--tertiary-text);
+	border-radius: 14px;
+}
+
+.iconWrapper {
+	width: 51px;
+	height: 51px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e0f3ff;
+	border-radius: 14px;
+}
+
+.iconWrapper i {
+	font-size: 28px;
+	color: var(--secondary);
+}
+
+.itemContent {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.eventHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.eventActions {
+	display: flex;
+	gap: 19px;
+}
+
+.delBtn {
+	font-size: 24px;
+	color: var(--red);
+}
+
+.checkBtn {
+	font-size: 24px;
+	color: var(--green);
+}
+
+.otherBtn {
+	font-size: 24px;
+	color: var(--secondary-text);
+	margin-left: 9px;
+}
+
+.eventFooter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.eventFooterUsers {
+	display: flex;
+}
+
+.userAvatar {
+	width: 42px;
+	height: 42px;
+	margin-left: -15px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	background-color: #c4c4c4;
+}
+
+.userAvatar:last-child {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	background-color: var(--primary);
+}
+
+.eventFooterData {
+	display: flex;
+	gap: 15px;
+}
+
+.eventFooter i {
+	font-size: 24px;
+	color: var(--primary);
+	margin-top: 5px;
+}
+
+.eventFooterGeo {
+	width: 233px;
+	display: flex;
+	gap: 17px;
+}
