@@ -79,6 +79,10 @@ h6 {
 }
 /*-- End Typography --*/
 
+.shadow {
+	filter: drop-shadow(0 1px 120px rgba(0, 0, 0, 0.12));
+}
+
 .material-symbols-outlined {
 	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }

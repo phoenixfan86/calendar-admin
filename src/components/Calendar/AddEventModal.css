@@ -1,0 +1,195 @@
+.modalWrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.25);
+	overflow: auto;
+	z-index: 10;
+}
+
+.modal {
+	width: 802px;
+	max-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: 20px;
+	padding: 51px;
+	background: #fff;
+	overflow-y: auto;
+}
+
+.modalHeader {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modalTitle p {
+	color: var(--tertiary-text);
+	margin-top: 10px;
+}
+
+.closeBtn:hover {
+	transform: scale(0.9);
+	transition: all 0.5s ease;
+}
+
+.modalBody {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.modalBody h6 {
+	color: var(--secondary-text);
+}
+
+.dateInput {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+}
+
+.inputGroup {
+	width: 100%;
+	height: 96px;
+	display: flex;
+	gap: 32px;
+}
+
+.dateItems {
+	flex: 1;
+	display: flex;
+	gap: 12px;
+	flex-direction: column;
+}
+
+.datePickerGroup {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.dateIcon {
+	position: absolute;
+	right: 0;
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 22px;
+}
+
+.dateIcon i {
+	font-size: 23px;
+	color: var(--primary);
+}
+
+.datepickerInput {
+	width: 334px;
+	font-size: 18px;
+	font-weight: medium;
+	line-height: 21.6px;
+	color: var(--primary-text);
+	padding: 16px 22px;
+	border: 1px solid var(--tertiary-text);
+	border-radius: 14px;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+}
+
+.datepickerInput:focus {
+	border: 2px solid var(--primary);
+}
+
+.eventContent {
+	width: 100%;
+	min-height: 96px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.inputItem {
+	font-size: 18px;
+	font-weight: medium;
+	line-height: 21.6px;
+	color: var(--primary-text);
+	padding: 16px 22px;
+	border: 1px solid var(--tertiary-text);
+	border-radius: 14px;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+}
+
+.inputItem:focus {
+	border: 2px solid var(--primary);
+}
+
+textarea {
+	height: 148px;
+}
+
+.modalBtn {
+	display: flex;
+	gap: 18px;
+	margin-top: 17px;
+	text-transform: uppercase;
+}
+
+.attachBtn {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	padding: 15px 30px;
+	border: 1px solid var(--secondary);
+	border-radius: 14px;
+	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+}
+
+.attachBtn,
+i h4 {
+	font-size: 24px;
+	color: var(--secondary);
+}
+
+.attachBtn:hover {
+	transform: scale(0.98);
+}
+
+.submitBtn {
+	display: flex;
+	gap: 27px;
+	align-items: center;
+	padding: 15px 34px;
+	background-color: var(--primary);
+	border: none;
+	border-radius: 14px;
+	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+}
+
+.submitBtn,
+i h4 {
+	font-size: 24px;
+	color: #fff;
+}
+
+.submitBtn:hover {
+	transform: scale(0.98);
+}

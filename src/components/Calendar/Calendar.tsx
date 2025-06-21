@@ -6,6 +6,9 @@ import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US'
 import { useState } from 'react';
 import YearView from "./YearView";
+import AddEventModal from "./AddEventModal"
+import EventListModal from "./EventListModal";
+import type { Event } from "../../types/EventProps";
 
 const locales = {
   'en-US': enUS,
@@ -29,23 +32,29 @@ type EventType = {
 const AdminCalendar = () => {
   const [selectedSlot, setSelectedSlot] = useState<SlotInfo | null>(null)
   const [events, setEvents] = useState<EventType[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [eventList, setEventList] = useState<Event[]>([])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const form = e.target as HTMLFormElement
-    const title = (form.elements.namedItem('title') as HTMLInputElement).value
-
-    if (selectedSlot) {
-      const newEvent = {
-        title,
-        start: selectedSlot.start,
-        end: selectedSlot.end,
-      }
-      const updated = [...events, newEvent]
-      setEvents(updated)
-      localStorage.setItem('myEvents', JSON.stringify(updated))
-      setSelectedSlot(null)
+  const handleAddEvent = (title: string, start: Date, end: Date) => {
+    const newEvent = {
+      title,
+      start,
+      end,
     }
+    const updated = [...events, newEvent]
+    setEvents(updated)
+    localStorage.setItem('myEvents', JSON.stringify(updated))
+    setSelectedSlot(null)
+  }
+
+  const handleSelectEvent = (event: Event) => {
+    const date = new Date(event.start)
+    const sameDayEvents = events.filter(
+      (e) =>
+        new Date(e.start).toDateString() === date.toDateString()
+    )
+    setSelectedDate(date)
+    setEventList(sameDayEvents)
   }
 
   const [currentView, setCurrentView] = useState<View>('month')
@@ -73,17 +82,37 @@ const AdminCalendar = () => {
         }}
       />
 
+      {/*-- Add new event --*/}
       {selectedSlot && (
-        <div className="modalWrapper">
-          <div className="modal">
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="title" placeholder="Назва події" required />
-              <button type="submit">Зберегти</button>
-              <button type="button" onClick={() => setSelectedSlot(null)}>Скасувати</button>
-            </form>
-          </div>
-        </div>
+        <AddEventModal
+          selectedSlot={selectedSlot}
+          onClose={() => setSelectedSlot(null)}
+          onSubmit={handleAddEvent}
+        />
       )}
+      {/*-- End Add new event --*/}
+
+      {selectedDate && (
+        <EventListModal
+          date={selectedDate}
+          events={eventList}
+          onClose={() => setSelectedDate(null)}
+          onAddNew={() => {
+            setSelectedSlot({ start: selectedDate, end: selectedDate }) // Відкриє форму додавання події
+          }}
+          onDelete={(id) => {
+            const updated = events.filter(e => e.id !== id)
+            setEvents(updated)
+          }}
+          onConfirm={(id) => {
+            // логіка підтвердження
+          }}
+          onEdit={(id) => {
+            // логіка редагування
+          }}
+        />
+      )}
+
     </main>
   );
 }
