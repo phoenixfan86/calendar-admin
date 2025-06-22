@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import moment from 'moment'
-import type { Moment } from 'moment'
-import { navigate } from 'react-big-calendar/lib/utils/constants'
-import { startOfYear, addYears, format, addMonths } from 'date-fns'
+import "./YearView.css";
+import React, { Component } from "react";
+import moment from "moment";
+import type { Moment } from "moment";
+import { navigate } from "react-big-calendar/lib/utils/constants";
+import { startOfYear, addYears, format, addMonths } from "date-fns";
 
 interface CalendarArray extends Array<Moment[]> {
   currentDate: Moment
@@ -14,8 +15,8 @@ interface CalendarArray extends Array<Moment[]> {
 
 function createCalendar(currentDate?: Moment | Date | string): CalendarArray {
   let momentDate = currentDate ? moment(currentDate) : moment()
-  const first = momentDate.clone().startOf('month')
-  const last = momentDate.clone().endOf('month')
+  const first = momentDate.clone().startOf("month")
+  const last = momentDate.clone().endOf("month")
   const weeksCount = Math.ceil((first.day() + last.date()) / 7)
   const calendar = Object.assign([], { currentDate: momentDate, first, last }) as CalendarArray
 
@@ -26,7 +27,7 @@ function createCalendar(currentDate?: Moment | Date | string): CalendarArray {
     calendar.month = momentDate.month()
 
     for (let day = 7 * weekNumber; day < 7 * (weekNumber + 1); day++) {
-      const date = momentDate.clone().set('date', day + 1 - first.day())
+      const date = momentDate.clone().set("date", day + 1 - first.day())
       week.push(date)
     }
   }
@@ -40,9 +41,20 @@ interface CalendarDateProps {
   onClick: (date: Moment) => void
 }
 
-const CalendarDate: React.FC<CalendarDateProps> = ({ dateToRender, dateOfMonth, onClick }) => {
+const CalendarDate: React.FC<CalendarDateProps> = ({
+  dateToRender,
+  dateOfMonth,
+  onClick
+}) => {
+  const isToday = dateToRender.isSame(moment(), "day");
+  const isSunday = dateToRender.day() === 0; // 0 = Sunday
+
+  const classes = ["date", "in-month"];
+  if (isToday) classes.push("today");
+  if (isSunday) classes.push("sunday");
+
   const today =
-    dateToRender.format('YYYY-MM-DD') === moment().format('YYYY-MM-DD') ? 'today' : ''
+    dateToRender.format("YYYY-MM-DD") === moment().format("YYYY-MM-DD") ? "today" : ""
 
   if (dateToRender.month() < dateOfMonth.month()) {
     return (
@@ -61,10 +73,10 @@ const CalendarDate: React.FC<CalendarDateProps> = ({ dateToRender, dateOfMonth, 
   }
 
   return (
-    <button className={`date in-month ${today}`} onClick={() => onClick(dateToRender)}>
+    <button className={classes.join(" ")} onClick={() => onClick(dateToRender)}>
       {dateToRender.date()}
     </button>
-  )
+  );
 }
 
 interface CalendarProps {
@@ -97,25 +109,30 @@ class Calendar extends Component<CalendarProps, CalendarState> {
     return (
       <div className="month">
         <div className="month-name">
-          {calendar.currentDate.format('MMMM').toUpperCase()}
+          {calendar.currentDate.format("MMMM").toUpperCase()}
         </div>
-        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
-          <span key={index} className="day">
-            {day}
-          </span>
-        ))}
-        {calendar.map((week, index) => (
-          <div key={index}>
-            {week.map((date) => (
-              <CalendarDate
-                key={date.format('YYYY-MM-DD')}
-                dateToRender={date}
-                dateOfMonth={calendar.currentDate}
-                onClick={(date) => alert(`Will go to daily-view of ${date.format('YYYY-MM-DD')}`)}
-              />
-            ))}
-          </div>
-        ))}
+
+        <div className="dayWrapper">
+          {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
+            <span key={index} className="day">
+              {day}
+            </span>
+          ))}
+        </div>
+        <div className="dateWrapper">
+          {calendar.flat().map((date) => (
+            <CalendarDate
+              key={date.format("YYYY-MM-DD")}
+              dateToRender={date}
+              dateOfMonth={calendar.currentDate}
+              onClick={(date) =>
+                alert(`Will go to daily-view of ${date.format("YYYY-MM-DD")}`)
+              }
+            />
+          ))}
+        </div>
+
+
       </div>
     )
   }
@@ -158,7 +175,7 @@ class YearView extends Component<YearProps> {
   }
 
   static title(date: Date) {
-    return format(date, 'yyyy')
+    return format(date, "yyyy")
   }
 }
 

@@ -1,4 +1,4 @@
 export interface YearViewProps{
-  date:string;
+  date:Date;
   action:string;
 }

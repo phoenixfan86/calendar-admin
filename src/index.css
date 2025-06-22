@@ -83,6 +83,10 @@ h6 {
 	filter: drop-shadow(0 1px 120px rgba(0, 0, 0, 0.12));
 }
 
+.shadow-2 {
+	filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.04));
+}
+
 .primaryBtn {
 	display: flex;
 	gap: 27px;

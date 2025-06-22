@@ -1,0 +1,37 @@
+.scheduler {
+	position: fixed;
+}
+
+.schedulerHeader {
+	margin-top: 23px;
+}
+
+.schedulerHeader h3 {
+	margin-bottom: 10px;
+}
+
+.scheduleSubtitle {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16.8px;
+}
+
+.schedulerBody {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 23px;
+}
+
+.schedulerSlot {
+	border-bottom: 1px solid var(--primary-highligt);
+}
+
+.slotEvent {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19.2px;
+	padding: 20px;
+	border-radius: 16px;
+	background-color: var(--tertiary);
+}

@@ -16,3 +16,11 @@ export interface EventListModalProps {
   onConfirm: (id: string) => void
   onEdit: (id: string) => void
 }
+
+export interface ToolbarProps {
+  label: string;
+  onNavigate: (action: 'PREV' | 'NEXT' | 'DATE') => void;
+  onView: (view: string) => void;
+  views: string[];
+  view: string;
+}
