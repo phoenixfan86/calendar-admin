@@ -1,5 +1,5 @@
-import './Notification.css';
-import type { NotificationProps } from '../../types/NotificationProps';
+import "./Notification.css";
+import type { NotificationProps } from "../../types/NotificationProps";
 
 const Notification = ({ unreadCount = 0 }: NotificationProps) => {
   return (

@@ -1,12 +1,11 @@
 
 import "./EventListModal.css";
-import React from 'react';
-import { format } from 'date-fns';
-import type { EventListModalProps } from '../../types/EventProps';
+import React from "react";
+import { format } from "date-fns";
+import type { EventListModalProps } from "../../types/EventProps";
 
 
 const EventListModal: React.FC<EventListModalProps> = ({
-  date,
   events,
   onClose,
   onAddNew,
@@ -81,10 +80,10 @@ const EventListModal: React.FC<EventListModalProps> = ({
                         <i className="fa-solid fa-clock"></i>
                         <div className="timeWrapper">
                           <h6 className="primaryText">
-                            {format(new Date(event.start), 'h:mm aa')}
+                            {format(new Date(event.start), "h:mm aa")}
                           </h6>
                           <h6 className="primaryText">
-                            {format(new Date(event.start), 'MMM d, yyyy ')}
+                            {format(new Date(event.start), "MMM d, yyyy ")}
                           </h6>
                         </div>
                       </div>

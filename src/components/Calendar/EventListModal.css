@@ -33,7 +33,12 @@
 	align-items: center;
 }
 
+.eventModalBody {
+	width: 100%;
+}
+
 .eventList {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
@@ -63,6 +68,7 @@
 }
 
 .itemContent {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;

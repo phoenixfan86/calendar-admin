@@ -1,9 +1,9 @@
 
-import './App.css'
-import { useState } from 'react';
-import Header from './components/Header/Header'
-import Sidebar from './components/Sidebar/Sidebar'
-import AdminCalendar from './components/Calendar/Calendar';
+import "./App.css";
+import { useState } from "react";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import AdminCalendar from "./components/Calendar/Calendar";
 
 function App() {
   const [activeLabel, setActiveLabel] = useState<string>("Dashboard");

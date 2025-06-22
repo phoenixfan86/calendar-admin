@@ -1,20 +1,20 @@
 import "./Calendar.css";
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import type { SlotInfo, View, ToolbarProps as RBC_ToolbarProps } from "react-big-calendar";
-import { format, parse, startOfWeek, getDay } from 'date-fns';
-import { enUS } from 'date-fns/locale/en-US'
-import { useState } from 'react';
+import { format, parse, startOfWeek, getDay } from "date-fns";
+import { enUS } from "date-fns/locale/en-US"
+import { useState } from "react";
 import YearView from "./YearView";
 import AddEventModal from "./AddEventModal";
 import EventListModal from "./EventListModal";
 import type { CalendarEvent } from "../../types/EventProps";
 import Scheduler from "./Sheduler";
 
-type CustomView = View | 'year';
+type CustomView = View | "year";
 
 const locales = {
-  'en-US': enUS,
+  "en-US": enUS,
 }
 
 const localizer = dateFnsLocalizer({
@@ -25,8 +25,7 @@ const localizer = dateFnsLocalizer({
   locales,
 })
 
-// Інтерфейс для CustomToolbar props з підтримкою кастомного view
-interface CustomToolbarProps extends Omit<RBC_ToolbarProps<any, object>, 'view' | 'onView'> {
+interface CustomToolbarProps extends Omit<RBC_ToolbarProps<any, object>, "view" | "onView"> {
   view: CustomView;
   onView: (view: CustomView) => void;
 }
@@ -40,22 +39,21 @@ const CustomToolbar = ({
   views,
   localizer: toolbarLocalizer,
 }: CustomToolbarProps) => {
-  // Доступні views (тільки ті, що нам потрібні)
-  const availableViews: (keyof typeof viewLabels)[] = ['day', 'week', 'month', 'year'];
+  const availableViews: (keyof typeof viewLabels)[] = ["day", "week", "month", "year"];
 
   const viewLabels = {
-    day: 'Daily',
-    week: 'Weekly',
-    month: 'Monthly',
-    year: 'Yearly',
+    day: "Daily",
+    week: "Weekly",
+    month: "Monthly",
+    year: "Yearly",
   };
 
   return (
     <div className="customToolbar">
       <div className="toolbarNavBtn">
-        <button onClick={() => onNavigate('PREV')} className="prevNextBtn"><i className="fa-solid fa-caret-left"></i></button>
+        <button onClick={() => onNavigate("PREV")} className="prevNextBtn"><i className="fa-solid fa-caret-left"></i></button>
         <span className="rbc-toolbar-label">{label}</span>
-        <button onClick={() => onNavigate('NEXT')} className="prevNextBtn"><i className="fa-solid fa-caret-right"></i></button>
+        <button onClick={() => onNavigate("NEXT")} className="prevNextBtn"><i className="fa-solid fa-caret-right"></i></button>
       </div>
 
       <div className="view-buttons">
@@ -63,7 +61,7 @@ const CustomToolbar = ({
           <button
             key={viewName}
             onClick={() => onView(viewName as CustomView)}
-            className={viewName === view ? 'active' : ''}
+            className={viewName === view ? "active" : ""}
           >
             {viewLabels[viewName]}
           </button>
@@ -79,7 +77,7 @@ const AdminCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [eventList, setEventList] = useState<CalendarEvent[]>([])
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [currentView, setCurrentView] = useState<CustomView>('month')
+  const [currentView, setCurrentView] = useState<CustomView>("month")
 
   const handleAddEvent = (title: string, description: string, start: Date, end: Date) => {
     const newEvent: CalendarEvent = {
@@ -92,16 +90,15 @@ const AdminCalendar = () => {
     }
     const updated = [...events, newEvent]
     setEvents(updated)
-    localStorage.setItem('myEvents', JSON.stringify(updated))
+    localStorage.setItem("myEvents", JSON.stringify(updated))
     setSelectedSlot(null)
   }
 
-  // Обробник зміни view
+
   const handleViewChange = (view: CustomView) => {
     setCurrentView(view);
   };
 
-  // Обробник для стандартних RBC views (без year)
   const handleRBCViewChange = (view: View) => {
     setCurrentView(view);
   };
@@ -109,7 +106,7 @@ const AdminCalendar = () => {
   return (
     <main className="adminCalendar">
       <div className="calendarWrapper">
-        {currentView !== 'year' ? (
+        {currentView !== "year" ? (
           <Calendar
             localizer={localizer}
             events={events}
@@ -136,7 +133,7 @@ const AdminCalendar = () => {
             }}
             formats={{
               weekdayFormat: (date) =>
-                localizer.format(date, 'EEEE', 'en-US')
+                localizer.format(date, "EEEE", "en-US")
             }}
             selectable
             onSelectSlot={(slotInfo) => {
@@ -152,14 +149,14 @@ const AdminCalendar = () => {
         ) : (
           <div>
             <CustomToolbar
-              label={localizer.format(currentDate, 'yyyy', 'en-US')}
+              label={localizer.format(currentDate, "yyyy", "en-US")}
               onNavigate={(action) => {
                 const newDate = new Date(currentDate);
-                if (action === 'PREV') {
+                if (action === "PREV") {
                   newDate.setFullYear(newDate.getFullYear() - 1);
-                } else if (action === 'NEXT') {
+                } else if (action === "NEXT") {
                   newDate.setFullYear(newDate.getFullYear() + 1);
-                } else if (action === 'TODAY') {
+                } else if (action === "TODAY") {
                   setCurrentDate(new Date());
                   return;
                 }
@@ -187,7 +184,7 @@ const AdminCalendar = () => {
               start: startTime,
               end: new Date(startTime.getTime() + 60 * 60 * 1000),
               slots: [startTime],
-              action: 'click',
+              action: "click",
             })
           }}
         />
@@ -215,20 +212,18 @@ const AdminCalendar = () => {
               start: selectedDate,
               end: selectedDate,
               slots: [selectedDate],
-              action: 'click',
+              action: "click",
             })
             setSelectedDate(null)
           }}
           onDelete={(id) => {
             const updated = events.filter(e => e.id !== id)
             setEvents(updated)
-            localStorage.setItem('myEvents', JSON.stringify(updated))
+            localStorage.setItem("myEvents", JSON.stringify(updated))
           }}
           onConfirm={(id) => {
-            // підтвердження виконання
           }}
           onEdit={(id) => {
-            // редагування
           }}
         />
       )}

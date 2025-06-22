@@ -1,5 +1,5 @@
-import './Mail.css';
-import type { MailProps } from '../../types/MailProps';
+import "./Mail.css";
+import type { MailProps } from "../../types/MailProps";
 
 const Mail = ({ incoming = 0 }: MailProps) => {
   return (

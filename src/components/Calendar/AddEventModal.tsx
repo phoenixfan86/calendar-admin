@@ -30,7 +30,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (files && files.length > 0) {
-      console.log('Selected files:', files)
+      console.log("Selected files:", files)
     }
   }
 
@@ -179,7 +179,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
                 type="file"
                 ref={inputRef}
                 onChange={handleFileChange}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
               />
             </div>
             <button

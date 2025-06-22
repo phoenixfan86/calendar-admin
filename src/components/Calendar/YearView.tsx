@@ -47,7 +47,7 @@ const CalendarDate: React.FC<CalendarDateProps> = ({
   onClick
 }) => {
   const isToday = dateToRender.isSame(moment(), "day");
-  const isSunday = dateToRender.day() === 0; // 0 = Sunday
+  const isSunday = dateToRender.day() === 0;
 
   const classes = ["date", "in-month"];
   if (isToday) classes.push("today");

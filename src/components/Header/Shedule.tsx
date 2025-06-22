@@ -1,4 +1,4 @@
-import './Shedule.css'
+import "./Shedule.css"
 
 const Shedule = () => {
   return (

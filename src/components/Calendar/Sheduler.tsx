@@ -10,6 +10,13 @@ interface SchedulerProps {
 const Scheduler: React.FC<SchedulerProps> = ({ date, events, onAdd }) => {
   const hours = Array.from({ length: 24 }, (_, i) => i)
 
+  const formatHour = (hour: number): string => {
+    if (hour === 0) return "12:00 AM"
+    if (hour === 12) return "12:00 PM"
+    if (hour < 12) return `${hour}:00 AM`
+    return `${hour - 12}:00 PM`
+  }
+
   return (
     <div className="scheduler">
       <button onClick={() => onAdd(new Date(date.setHours(9, 0)))} className="primaryBtn">
@@ -30,7 +37,7 @@ const Scheduler: React.FC<SchedulerProps> = ({ date, events, onAdd }) => {
 
           return (
             <div key={hour} className="schedulerSlot">
-              <div className="slotTime">{`${hour}:00`}</div>
+              <div className="slotTime">{formatHour(hour)}</div>
               <div className="slotEvents">
                 {slotEvents.map((event) => (
                   <div key={event.id} className="slotEvent">

@@ -1,6 +1,6 @@
-import './Sidebar.css';
-import { useState } from 'react';
-import type { MenuItemsProps } from '../../types/MenuItemsProps';
+import "./Sidebar.css";
+import { useState } from "react";
+import type { MenuItemsProps } from "../../types/MenuItemsProps";
 
 interface SidebarProps {
   setActiveLabel: (label: string) => void;
@@ -46,7 +46,7 @@ const Sidebar = ({ isVisible, setActiveLabel }: SidebarProps) => {
           {menuItems.map(({ label, link, icon }, key) => (
             <li
               key={key}
-              className={`menuItems ${activeIndex === key ? 'active' : ''}`}
+              className={`menuItems ${activeIndex === key ? "active" : ""}`}
               onClick={() => {
                 setActiveIndex(key);
                 setActiveLabel(label)

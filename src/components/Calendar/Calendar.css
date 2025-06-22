@@ -104,3 +104,32 @@
 .rbc-row-segment {
 	padding: 10px !important;
 }
+
+.rbc-time-view .rbc-row:first-child {
+	min-height: 102px;
+}
+
+.rbc-time-view .rbc-header {
+	display: flex;
+}
+
+.rbc-time-view .rbc-button-link {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 28.8px;
+	color: var(--primary-text);
+}
+
+.rbc-time-view .rbc-today .rbc-button-link {
+	color: var(--primary);
+	border-radius: 14px;
+	box-shadow: inset 0 0 0 4px var(--primary);
+}
+
+.rbc-time-view .rbc-label {
+	color: var(--secondary-text);
+}

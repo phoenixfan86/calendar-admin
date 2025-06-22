@@ -1,8 +1,8 @@
-import './Header.css'
-import Mail from './Mail';
-import Notification from './Notification';
-import Search from './Search';
-import Shedule from './Shedule';
+import "./Header.css";
+import Mail from "./Mail";
+import Notification from "./Notification";
+import Search from "./Search";
+import Shedule from "./Shedule";
 
 interface HeaderProps {
   activeLabel: string;
@@ -44,7 +44,7 @@ const Header = ({ activeLabel, isVisible, setIsVisible }: HeaderProps) => {
         </div>
         <div className="avatar"></div>
         <div className="lang">
-          <select name="lang" id="lang" className='h5'>
+          <select name="lang" id="lang" className="h5">
             <option value="en" selected>EN</option>
             <option value="de">DE</option>
           </select>

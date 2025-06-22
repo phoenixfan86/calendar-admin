@@ -1,5 +1,6 @@
 .scheduler {
 	position: fixed;
+	width: 339px;
 }
 
 .schedulerHeader {
@@ -24,7 +25,22 @@
 }
 
 .schedulerSlot {
+	min-height: 28px;
+	position: relative;
+	border-top: 1px solid var(--grey-01);
 	border-bottom: 1px solid var(--primary-highligt);
+}
+
+.slotTime {
+	position: absolute;
+	top: -12px;
+	font-size: 18px;
+	font-weight: medium;
+	line-height: 21.6px;
+	padding: 1px 20px;
+	margin-left: 27px;
+	background-color: #fff;
+	color: var(--secondary-text);
 }
 
 .slotEvent {
@@ -32,6 +48,9 @@
 	font-weight: 400;
 	line-height: 19.2px;
 	padding: 20px;
+	margin-top: 25px;
+	margin-bottom: 30px;
 	border-radius: 16px;
+	color: #bc2dff;
 	background-color: var(--tertiary);
 }
